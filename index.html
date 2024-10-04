@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Códigos de Barras</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+    <style>
+        body {
+            background-color: #9ca4b6;
+            color: #D8DEE9;
+            height: 100vh; 
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; }
+        .nord-button {
+            background-color: #88C0D0;
+            color: #2E3440;
+            transition: 0.5s;
+        }
+        .nord-button:hover {
+            background-color: #61909c;
+        }
+        .card {
+            padding: 1.5rem; 
+            margin: 0; 
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center ">
+    <div class="bg-gray-800 p-6  shadow-xl  max-w-md rounded-md p-6 m-0 w-full box-border">
+        <h1 class="text-3xl font-bold text-center mb-6">Generador de Códigos de Barras</h1>
+        <form id="barcode-form" class="mb-4">
+            <div class="mb-4">
+                <label for="barcode-text" class="block text-sm font-medium">Texto para el código de barras</label>
+                <input id="barcode-text" type="text" class="mt-1 block w-full p-2 rounded bg-gray-700 text-white border border-gray-600">
+            </div>
+            <div class="mb-4">
+                <label for="barcode-type" class="block text-sm font-medium">Tipo de código de barras</label>
+                <select id="barcode-type" class="mt-1 block w-full p-2 rounded bg-gray-700 text-white border border-gray-600">
+                    <option value="code128">Code 128</option>
+                    <option value="code39">Code 39</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="line-color" class="block text-sm font-medium">Color de las líneas</label>
+                <input id="line-color" type="color" value="#D8DEE9" class="mt-1 block w-full p-2 rounded bg-gray-700 text-white border border-gray-600">
+            </div>
+            <div class="mb-4">
+                <label for="background-color" class="block text-sm font-medium">Color de fondo</label>
+                <input id="background-color" type="color" value="#2E3440" class="mt-1 block w-full p-2 rounded bg-gray-700 text-white border border-gray-600">
+            </div>
+            <div class="mb-4">
+                <label for="barcode-width" class="block text-sm font-medium">Ancho del código de barras</label>
+                <input id="barcode-width" type="number" value="2" class="mt-1 block w-full p-2 rounded bg-gray-700 text-white border border-gray-600">
+            </div>
+            <div class="mb-4">
+                <label for="barcode-height" class="block text-sm font-medium">Altura del código de barras</label>
+                <input id="barcode-height" type="number" value="100" class="mt-1 block w-full p-2 rounded bg-gray-700 text-white border border-gray-600">
+            </div>
+            <button type="submit" class="nord-button p-2 w-full rounded-lg">Generar Código de Barras</button>
+        </form>
+        <div id="barcode-container" class="flex justify-center items-center">
+            <svg id="barcode" ></svg>
+        </div>
+        <br>
+        <button id="download-svg" class="nord-button p-2 w-full rounded-lg mb-2">Descargar como SVG</button>
+        <button id="download-png" class="nord-button p-2 w-full rounded-lg">Descargar como PNG</button>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>
